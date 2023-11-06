@@ -57,6 +57,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.save(user);
 
             session.getTransaction().commit();
+            System.out.println("User с именем " + name + " " + lastName + " добавлен в базу данных");
         }
 
     }
@@ -69,6 +70,7 @@ public class UserDaoHibernateImpl implements UserDao {
             session.delete(session.get(User.class, id));
 
             session.getTransaction().commit();
+            System.out.println("User с id " + id + " удалён из базы данных");
         }
 
     }
@@ -93,7 +95,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try (var session = Util.hibernateSession()) {
             session.beginTransaction();
 
-            session.createQuery("delete from Users").executeUpdate();
+            session.createQuery("delete from User").executeUpdate();
 
             session.getTransaction().commit();
         }

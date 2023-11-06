@@ -38,7 +38,7 @@ public class Util {
                 settings.put(Environment.USER, USERNAME);
                 settings.put(Environment.PASS, PASSWORD);
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.PostgreSQL82Dialect");
-                settings.put(Environment.SHOW_SQL, "true");
+//                settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
                 configuration.setProperties(settings);
