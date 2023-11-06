@@ -1,6 +1,5 @@
 package jm.task.core.jdbc.dao;
 
-import com.mysql.cj.protocol.Resultset;
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
 
@@ -27,7 +26,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 )
                 """;
 
-        try (Connection connection = Util.open();
+        try (Connection connection = Util.jdbcOpen();
              PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -40,7 +39,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 DROP TABLE IF EXISTS users;
                 """;
 
-        try (Connection connection = Util.open();
+        try (Connection connection = Util.jdbcOpen();
              PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -54,7 +53,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 VALUES (?, ?, ?);
                 """;
 
-        try (Connection connection = Util.open();
+        try (Connection connection = Util.jdbcOpen();
              PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
             preparedStatement.setString(1, name);
             preparedStatement.setString(2, lastName);
@@ -73,7 +72,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 WHERE id = ?;
                 """;
 
-        try (Connection connection = Util.open();
+        try (Connection connection = Util.jdbcOpen();
              PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
             preparedStatement.setLong(1, id);
             preparedStatement.executeUpdate();
@@ -90,7 +89,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 """;
 
         List<User> userList = new ArrayList<>();
-        try (Connection connection = Util.open();
+        try (Connection connection = Util.jdbcOpen();
              PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
@@ -113,7 +112,7 @@ public class UserDaoJDBCImpl implements UserDao {
                 FROM users;
                 """;
 
-        try (Connection connection = Util.open();
+        try (Connection connection = Util.jdbcOpen();
              PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
