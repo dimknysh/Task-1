@@ -13,7 +13,7 @@ public class Main {
         try (var session = Util.hibernateSession()) {
             UserServiceImpl dao = new UserServiceImpl();
 
-//            dao.createUsersTable();
+            dao.createUsersTable();
 //
 //            dao.saveUser("Dmitry", "Knysh", (byte) 32);
 //            dao.saveUser("Vladimir", "Pupkin", (byte) 19);
